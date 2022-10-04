@@ -1,0 +1,19 @@
+services:
+  inner-service:
+    build:
+      context: ./inner-service
+    networks:
+      - private
+
+  outer-service:
+    build:
+      context: ./outer-service
+    ports:
+      - 8001:8001
+    networks:
+      - private
+
+networks:
+  private:
+    name: private
+    enable_ipv6: false
