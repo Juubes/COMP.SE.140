@@ -7,8 +7,8 @@ const PORT = "8001";
 app.get("/", async (req, res) => {
   // Request inner service
 
-  res.write(`Hello from ${req.ip}:${req.socket.remotePort}\n`);
-  res.write(`to ${req.socket.localAddress}:${PORT}\n`);
+  res.write(`Hello from ${req.socket.localAddress}:${req.socket.remotePort}\n`);
+  res.write(`to ${req.socket.remoteAddress}:${PORT}\n`);
 
   const response = await fetch("http://inner-service:1234/");
   const text = await response.text();
